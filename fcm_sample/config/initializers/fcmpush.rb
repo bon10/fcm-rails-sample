@@ -3,8 +3,9 @@ Fcmpush.configure do |config|
   # firebase web console => project settings => service account => firebase admin sdk => generate new private key
 
   # pass string of path to credential file to config.json_key_io
-  config.json_key_io = "#{Rails.root}/" + ENV['SERVICE_ACOUNT_PATH']
-
+  if Rails.env.development?
+    config.json_key_io = "#{Rails.root}/" + ENV['SERVICE_ACOUNT_PATH']
+  end
   # Or content of json key file wrapped with StringIO
   # config.json_key_io = StringIO.new('{ ... }')
 
