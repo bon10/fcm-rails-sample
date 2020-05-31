@@ -64,7 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_12factor', group: :production
 
 # FCM用
-gem 'fcm'
+gem 'fcmpush'
 # .env
 gem 'dotenv-rails'
 

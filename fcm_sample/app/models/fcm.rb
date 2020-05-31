@@ -1,25 +1,21 @@
-require 'fcm'
+require 'fcmpush'
+
 class Fcm
-  def fcm_push_notification
-    fcm_client = FCM.new(ENV['FCM_SEVER_KEY'])
-    options = { 
-      priority: 'high',
-      data: { 
-        message: message,
-        icon: image
-      },
-      notification: { 
-        body: 'message',
-        title: 'title',
-        sound: 'default',
-        #icon: 'image.png'
+  def self.push(token,title,body)
+    project_id   = ENV['PROJECT_ID']
+    client  = Fcmpush.new(project_id)
+    payload = { # ref. https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages
+      message: {
+        token: token,
+        notification: {
+          title: title,
+          body: body
+        }
       }
-    } 
-    registration_ids = ["registration_id1", "registration_id2"]
-    #([Array of registration ids up to 1000])
-    registration_ids.each_slice(20) do |registration_id|
-      response = fcm_client.send(registration_id, options)
-      puts response
-    end
+    }
+
+    response = client.push(payload)
+    json = response.json
+    Rails.logger.info json[:name] # => "projects/[your_project_id]/messages/0:1571037134532751%31bd1c9631bd1c96"
   end
 end
