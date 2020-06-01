@@ -5,7 +5,7 @@ class User < ApplicationRecord
     when "new"
       Rails.logger.info "新規登録"
       register_token(hash['token'], hash['id'])
-    when "update"
+    when "change"
       Rails.logger.info "更新"
       update_token(hash['token'], hash['id'])
     else
