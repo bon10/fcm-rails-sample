@@ -13,7 +13,7 @@ class User < ApplicationRecord
     end
   end
 
-  def self.register_token(token, id)
+  def self.register_token(token, device_id)
     # TODO: 実際はログイン中のユーザーを取得(例えばdeviseの current_user )
     user = User.first
     user.token = token
