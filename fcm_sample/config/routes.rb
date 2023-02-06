@@ -1,10 +1,3 @@
 Rails.application.routes.draw do
-  root  'users#index'
-
-  #ユーザー一覧を表示
-  get '/users', to: 'users#index'
-
-  # トークンを登録更新する
-  post '/token', to: 'users#token'
-
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

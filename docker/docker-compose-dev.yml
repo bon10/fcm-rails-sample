@@ -1,7 +1,8 @@
 version: "3"
 services:
   db:
-    image: mysql:5.5
+    platform: linux/x86_64
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
@@ -22,6 +23,7 @@ services:
       - ../:/app
     working_dir: /app
     container_name: "fcm-sample-web"
+    depends_on:
+      - db
     links:
       - "db"
- 
