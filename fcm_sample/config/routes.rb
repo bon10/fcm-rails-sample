@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'users#index'
+
+  get 'login', to: 'login#new'
+  post 'login', to: 'login#create'
+  delete 'logout', to: 'login#destroy'
+
+  # ユーザー一覧を表示
+  get '/users', to: 'users#index'
+  # トークンを登録更新する
+  post '/token', to: 'users#token'
 end
