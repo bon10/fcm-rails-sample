@@ -9,7 +9,18 @@ class Fcm
         token: token,
         notification: {
           title: title,
-          body: body
+          body: body,
+        },
+        apns: {
+          payload: {
+            aps: {
+              badge: 0,
+              sound: 'default' # iOSで通知を鳴らすための設定
+            }
+          }
+        },
+        data: {
+          notification_foreground: 'true', # アプリがフォアグラウンド状態でも通知を表示するための設定
         }
       }
     }
